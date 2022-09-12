@@ -1,13 +1,15 @@
 package iteration
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestRepeat(t *testing.T) {
-	repeated := Repeat("k")
-	expected := "kkkkk"
+	repeated := Repeat("a")
+	expected := "aaaaa"
 
 	if repeated != expected {
-		t.Errorf("expected %q, got %q", expected, repeated)
+		t.Errorf("expected %q but got %q", expected, repeated)
 	}
 }
 

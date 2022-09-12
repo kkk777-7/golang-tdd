@@ -1,8 +1,11 @@
 package iteration
 
-func Repeat(word string) (res string) {
-	for i := 0; i < 5; i++ {
-		res += word
+const repeatCount = 5
+
+func Repeat(word string) string {
+	var repeated string
+	for i := 0; i < repeatCount; i++ {
+		repeated += word
 	}
-	return res
+	return repeated
 }
