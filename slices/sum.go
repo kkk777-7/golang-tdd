@@ -1,30 +1,32 @@
 package slices
 
-func Sum(numbers []int) (sum int) {
+func Sum(numbers []int) int {
+	var sum int
 	for _, number := range numbers {
 		sum += number
 	}
 	return sum
 }
 
-func SumAll(numbersToSum ...[]int) []int {
-	var sums []int
-	for _, numbers := range numbersToSum {
-		sums = append(sums, Sum(numbers))
+func SumAll(numbersAry ...[]int) []int {
+	var sumAry []int
+	for _, numbers := range numbersAry {
+		sumAry = append(sumAry, Sum(numbers))
 	}
-
-	return sums
+	return sumAry
 }
 
-func SumAllTails(numbersToSum ...[]int) []int {
-	var sums []int
-	for _, numbers := range numbersToSum {
+func SumAllTails(numbersAry ...[]int) []int {
+	var sumTailAry []int
+	var num int
+	for _, numbers := range numbersAry {
 		if len(numbers) == 0 {
-			sums = append(sums, 0)
+			num = 0
 		} else {
-			tail := numbers[1:]
-			sums = append(sums, Sum(tail))
+			num = Sum(numbers[1:])
 		}
+
+		sumTailAry = append(sumTailAry, num)
 	}
-	return sums
+	return sumTailAry
 }
