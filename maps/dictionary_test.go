@@ -50,6 +50,29 @@ func TestAdd(t *testing.T) {
 	})
 }
 
+func TestUpdate(t *testing.T) {
+	dictionary := Dictionary{"test": "this is just a test"}
+	err := dictionary.Update("test", "new definition")
+	assertError(t, err, nil)
+
+	want := "new definition"
+	got, err := dictionary.Search("test")
+	if err != nil {
+		t.Fatal("should find added word:", err)
+	}
+	assertStrings(t, got, want)
+}
+
+func TestDelete(t *testing.T) {
+	dictionary := Dictionary{"test": "this is just a test"}
+	dictionary.Delete("test")
+
+	_, err := dictionary.Search("test")
+	if err != ErrNotFound {
+		t.Errorf("Expected %q to be deleted", "test")
+	}
+}
+
 func assertStrings(t *testing.T, got string, want string) {
 	t.Helper()
 	if got != want {
