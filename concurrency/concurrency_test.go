@@ -38,7 +38,7 @@ func TestCheckWebsite(t *testing.T) {
 	}
 }
 
-func BechmarkCheckWebsites(b *testing.B) {
+func BenchmarkCheckWebsites(b *testing.B) {
 	urls := make([]string, 100)
 	for i := 0; i < len(urls); i++ {
 		urls[i] = "a url"
